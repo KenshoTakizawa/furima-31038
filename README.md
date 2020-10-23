@@ -46,18 +46,18 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column          | Type        | Options     |
-| --------------- | ----------- | ----------- |
-| name            | string      | null: false |
-| discription     | text        | null: false |
-| price           | integer     | null: false |
-| category        | integer     | null: false |
-| condition       | integer     | null: false |
-| send_method     | integer     | null: false |
-| destination     | integer     | null: false |
-| delivery_period | integer     | null: false |
-| image           |             |             |
-| user            | references | null: false, foreign_key: true |
+| Column             | Type        | Options     |
+| ------------------ | ----------- | ----------- |
+| name               | string      | null: false |
+| discription        | text        | null: false |
+| price              | integer     | null: false |
+| category_id        | integer     | null: false |
+| condition_id       | integer     | null: false |
+| send_method_id     | integer     | null: false |
+| destination_id     | integer     | null: false |
+| delivery_period_id | integer     | null: false |
+| image              |             |             |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -77,19 +77,19 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- has_one :addresses
+- has_one :addresse
 
 ## addresses テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| postal_code   | string     | null: false                    |
-| prefectures   | integer    | null: false, foreign_key: true |
-| city          | string     | null: false                    |
-| address       | string     | null: false                    |
-| building_name | string     |                                |
-| phone_number  | string     | null: false                    |
-| order         | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal_code    | string     | null: false                    |
+| destination_id | integer    | null: false                    |
+| city           | string     | null: false                    |
+| house_number   | string     | null: false                    |
+| building_name  | string     |                                |
+| phone_number   | string     | null: false                    |
+| order          | references | null: false, foreign_key: true |
 
 
 ### Association

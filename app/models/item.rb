@@ -8,6 +8,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  has_one :order
 
   validates :name, :description, :category, :condition, :send_method, :destination, :delivery_period, presence: true
 

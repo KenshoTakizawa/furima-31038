@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :forbid_order
+  before_action :do_login
+  before_action :go_root
 
   def index
     @order_addresse = OrderAddresse.new
@@ -19,6 +22,25 @@ class OrdersController < ApplicationController
   end
 
   private
+  def go_root
+    if current_user.id == Item.find(params[:item_id]).user.id
+      redirect_to root_path
+    end
+  end
+
+  def do_login
+    unless user_signed_in?
+      redirect_to root_path
+    end
+  end
+
+  def forbid_order
+    if Item.find(params[:item_id]).order.id.present?
+      redirect_to root_path
+    end
+  end
+
+
 
   def addresse_params
     params.require(:order_addresse).permit(:postal_code, :destination_id, :city, :house_number, :building_name, :phone_number).merge(order_id: params[:id], user_id: current_user.id, token: params[:token], item_id: params[:item_id])

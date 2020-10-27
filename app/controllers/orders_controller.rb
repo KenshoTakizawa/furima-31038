@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
   end
 
   def forbid_order
-    if Item.find(params[:item_id]).order.id.present?
+    if Item.find(params[:item_id]).order.present?
       redirect_to root_path
     end
   end

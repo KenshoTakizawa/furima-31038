@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   has_one :order, dependent: :destroy
 
-  validates :name, :description, :category, :condition, :send_method, :destination, :delivery_period, presence: true
+  validates :name, :description, :category, :condition, :send_method, :destination, :delivery_period,:image, presence: true
 
   validates :category_id, :condition_id, :send_method_id, :destination_id, :delivery_period_id, numericality: { other_than: 1 } 
 
